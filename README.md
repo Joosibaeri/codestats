@@ -5,7 +5,7 @@ agents, for a chosen time range.
 
 Clicking the bar icon opens a popup with:
 
-- a time-range selector: 7d, Month, Year, Last year, All
+- a time-range selector: 7d, Month, Year, All
 - totals: fresh tokens, cost, sessions, prompts
 - a per-agent split (OpenCode, Mammouth, Codex, Claude Code)
 - a per-model split

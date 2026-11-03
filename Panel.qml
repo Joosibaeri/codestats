@@ -204,7 +204,6 @@ Panel {
             { id: "7d", label: "7d" },
             { id: "month", label: "Month" },
             { id: "year", label: "Year" },
-            { id: "last-year", label: "Last yr" },
             { id: "all", label: "All" }
           ]
 
