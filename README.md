@@ -5,7 +5,7 @@ agents, for a chosen time range.
 
 Clicking the bar icon opens a popup with:
 
-- a time-range selector: 7d, 30d, Month, Last month, Year, Last year, All
+- a time-range selector: 7d, Month, Year, Last year, All
 - totals: fresh tokens, cost, sessions, prompts
 - a per-agent split (OpenCode, Mammouth, Codex, Claude Code)
 - a per-model split
@@ -31,6 +31,25 @@ separately, because agents re-send the whole context on every step.
 Copy the folder to `~/.config/omarchy/plugins/joosibaeri.codestats/` and add
 `{ "id": "joosibaeri.codestats" }` to the bar's section in
 `~/.config/omarchy/shell.json`.
+
+## Remove
+
+1. Delete the bar entry `{ "id": "joosibaeri.codestats" }` from
+   `~/.config/omarchy/shell.json`.
+2. Delete the plugin folder:
+
+   ```sh
+   rm -rf ~/.config/omarchy/plugins/joosibaeri.codestats
+   ```
+
+3. Restart the shell:
+
+   ```sh
+   omarchy-restart-shell
+   ```
+
+Nothing else is written to disk. The helper only reads the agents' data
+files, so no cleanup is needed there.
 
 Check the helper from the command line:
 

@@ -202,9 +202,7 @@ Panel {
         Repeater {
           model: [
             { id: "7d", label: "7d" },
-            { id: "30d", label: "30d" },
             { id: "month", label: "Month" },
-            { id: "last-month", label: "Last mo" },
             { id: "year", label: "Year" },
             { id: "last-year", label: "Last yr" },
             { id: "all", label: "All" }
