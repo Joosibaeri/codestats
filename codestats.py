@@ -155,6 +155,29 @@ def collect_mammouth(db: Path, start: int, end: int) -> dict:
         con.close()
 
 
+def session_model(con: sqlite3.Connection, sid: str, model, start: int, end: int) -> str:
+    """Session model from session_v2; when that is NULL, from its assistant messages."""
+    if model:
+        try:
+            return model_key(json.loads(model))
+        except Exception:
+            pass
+    names = {}
+    for (data,) in con.execute(
+        """SELECT data FROM session_message
+           WHERE session_id = ? AND type = 'assistant'
+             AND time_created >= ? AND time_created < ?""",
+        (sid, start, end),
+    ):
+        try:
+            name = model_key(json.loads(data))
+        except Exception:
+            continue
+        if name != "?":
+            names[name] = names.get(name, 0) + 1
+    return max(names, key=names.get) if names else "?"
+
+
 def collect_opencode(db: Path, start: int, end: int) -> dict:
     """OpenCode's current database: per-session token totals in session_v2."""
     con = ro(db)
@@ -167,10 +190,7 @@ def collect_opencode(db: Path, start: int, end: int) -> dict:
             (start, end),
         ).fetchall()
         for sid, model, i, o, r, cr, cw, c in rows:
-            try:
-                name = model_key(json.loads(model)) if model else "?"
-            except Exception:
-                name = "?"
+            name = session_model(con, sid, model, start, end)
             prompts = con.execute(
                 """SELECT COUNT(*) FROM session_message
                    WHERE session_id = ? AND type = 'user'
