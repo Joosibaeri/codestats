@@ -12,6 +12,10 @@ Clicking the bar icon opens a popup with:
 
 Middle click opens the Mammouth terminal stats.
 
+## License
+
+MIT. See [LICENSE](LICENSE).
+
 ## Data sources (read-only)
 
 | Agent       | Location                                  |
