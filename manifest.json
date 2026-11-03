@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "joosibaeri.codestats",
+  "name": "CodeStats",
+  "version": "4.0.0",
+  "author": "joosibaeri",
+  "description": "Bar button and popup showing token and cost usage across installed coding agents, for any time range.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "CodeStats",
+    "description": "Icon in the bar; click for tokens, cost, and per-agent and per-model split over a chosen time range.",
+    "category": "AI",
+    "allowMultiple": false
+  }
+}
